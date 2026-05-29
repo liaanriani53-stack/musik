@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA AI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+}
+
+body{
+background:#050816;
+overflow:hidden;
+height:100vh;
+color:white;
+position:relative;
+}
+
+/* Background Glow */
+
+.glow{
+position:absolute;
+width:600px;
+height:600px;
+background:radial-gradient(circle,#00bfff33,transparent 70%);
+top:-200px;
+right:-150px;
+filter:blur(40px);
+animation:moveGlow 8s infinite alternate;
+}
+
+.glow2{
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle,#8a2be233,transparent 70%);
+bottom:-200px;
+left:-100px;
+filter:blur(50px);
+animation:moveGlow 10s infinite alternate;
+}
+
+@keyframes moveGlow{
+from{
+transform:translateY(0px);
+}
+to{
+transform:translateY(40px);
+}
+}
+
+/* Stars */
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+border-radius:50%;
+animation:blink 2s infinite alternate;
+}
+
+@keyframes blink{
+from{opacity:0.2;}
+to{opacity:1;}
+}
+
+/* Navbar */
+
+nav{
+width:100%;
+padding:25px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:relative;
+z-index:10;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:#00bfff;
+text-shadow:0 0 15px #00bfff;
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav ul li{
+cursor:pointer;
+transition:0.3s;
+}
+
+nav ul li:hover{
+color:#00bfff;
+}
+
+/* Main */
+
+.main{
+height:85vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:50px;
+position:relative;
+z-index:5;
+}
+
+.left{
+flex:1;
+}
+
+.left h1{
+font-size:75px;
+line-height:1.1;
+margin-bottom:20px;
+}
+
+.left h1 span{
+color:#00bfff;
+text-shadow:0 0 20px #00bfff;
+}
+
+.left p{
+font-size:18px;
+max-width:600px;
+line-height:1.8;
+opacity:0.8;
+margin-bottom:30px;
+}
+
+/* Buttons */
+
+.buttons{
+display:flex;
+gap:20px;
+}
+
+.btn{
+padding:15px 35px;
+border:none;
+border-radius:40px;
+font-size:15px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.primary{
+background:#00bfff;
+color:black;
+box-shadow:0 0 20px #00bfff;
+}
+
+.primary:hover{
+transform:scale(1.05);
+}
+
+.secondary{
+background:transparent;
+border:1px solid #00bfff;
+color:white;
+}
+
+.secondary:hover{
+background:#00bfff22;
+}
+
+/* AI Circle */
+
+.right{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+.ai-circle{
+width:350px;
+height:350px;
+border-radius:50%;
+border:2px solid #00bfff55;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+box-shadow:0 0 60px #00bfff33;
+animation:rotate 12s linear infinite;
+}
+
+.ai-core{
+width:180px;
+height:180px;
+border-radius:50%;
+background:radial-gradient(circle,#00bfff,#081426);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:35px;
+box-shadow:0 0 40px #00bfff;
+}
+
+.ring{
+position:absolute;
+border:1px solid #00bfff55;
+border-radius:50%;
+}
+
+.r1{
+width:420px;
+height:420px;
+animation:rotate 20s linear infinite reverse;
+}
+
+.r2{
+width:500px;
+height:500px;
+animation:rotate 25s linear infinite;
+}
+
+@keyframes rotate{
+from{
+transform:rotate(0deg);
+}
+to{
+transform:rotate(360deg);
+}
+}
+
+/* Music */
+
+.music-player{
+position:absolute;
+bottom:30px;
+left:50%;
+transform:translateX(-50%);
+padding:18px 30px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:20px;
+display:flex;
+gap:20px;
+align-items:center;
+z-index:20;
+}
+
+.music-player button{
+padding:10px 20px;
+border:none;
+border-radius:20px;
+background:#00bfff;
+cursor:pointer;
+font-weight:bold;
+}
+
+.music-player span{
+opacity:0.8;
+font-size:14px;
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.main{
+flex-direction:column;
+text-align:center;
+}
+
+.left h1{
+font-size:50px;
+}
+
+.left p{
+margin:auto;
+margin-bottom:30px;
+}
+
+.buttons{
+justify-content:center;
+margin-bottom:50px;
+}
+
+.ai-circle{
+width:250px;
+height:250px;
+}
+
+.ai-core{
+width:130px;
+height:130px;
+font-size:25px;
+}
+
+.r1{
+width:320px;
+height:320px;
+}
+
+.r2{
+width:380px;
+height:380px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="glow"></div>
+<div class="glow2"></div>
+
+<nav>
+<div class="logo">NOVA AI</div>
+
+<ul>
+<li>Home</li>
+<li>Technology</li>
+<li>Features</li>
+<li>About</li>
+</ul>
+</nav>
+
+<div class="main">
+
+<div class="left">
+
+<h1>
+THE FUTURE <br>
+OF <span>ARTIFICIAL AI</span>
+</h1>
+
+<p>
+Build the future with intelligent technology, futuristic experience,
+and modern digital innovation beyond imagination.
+</p>
+
+<div class="buttons">
+
+<button class="btn primary">
+Explore Now
+</button>
+
+<button class="btn secondary">
+Learn More
+</button>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="ai-circle">
+
+<div class="ring r1"></div>
+<div class="ring r2"></div>
+
+<div class="ai-core">
+🤖
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="music-player">
+
+<button onclick="toggleMusic()">
+🎧 Play
+</button>
+
+<span>
+Cyber Ambience • NOVA AI
+</span>
+
+</div>
+
+<audio id="music" loop>
+<source src="https://files.catbox.moe/ljxd4a.mp3" type="audio/mp4">
+</audio>
+
+<script>
+
+/* Stars */
+
+for(let i=0;i<250;i++){
+
+let star=document.createElement('div');
+
+star.classList.add('star');
+
+star.style.top=Math.random()*100+'%';
+star.style.left=Math.random()*100+'%';
+
+star.style.animationDuration=
+(Math.random()*3+1)+'s';
+
+document.body.appendChild(star);
+
+}
+
+/* Music */
+
+const music=document.getElementById('music');
+
+let isPlaying=false;
+
+function toggleMusic(){
+
+if(!isPlaying){
+
+music.play();
+
+isPlaying=true;
+
+}else{
+
+music.pause();
+
+isPlaying=false;
+
+}
+
+}
+
+</script>
+
+</body>
+</html
